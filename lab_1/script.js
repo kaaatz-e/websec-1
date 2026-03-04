@@ -1,8 +1,16 @@
-const num1Input = document.getElementById("num1");
-const num2Input = document.getElementById("num2");
-const operationSelect = document.getElementById("operation");
-const form = document.getElementById("calculate");
-const resultsDiv = document.getElementById("results");
+function getElement(id) {
+    const element = document.getElementById(id);
+    if (!element) {
+        throw new Error(`Элемент с id="${id}" не найден :\(`);
+    }
+    return element;
+}
+
+const num1Input = getElement("num1");
+const num2Input = getElement("num2");
+const operationSelect = getElement("operation");
+const form = getElement("calculate");
+const resultsDiv = getElement("results");
 
 let history = [];
 
