@@ -5,7 +5,7 @@ body {
     margin: 25px;
 }
 
-.calculator {
+form {
     background-color:  #baffc2;
     padding: 15px;
     border-radius: 10px;
@@ -89,7 +89,6 @@ button:hover {
 }
 
 .results {
-    border-radius: 14px;
     padding: 20px;
     min-height: 80px;
     gap: 10px;

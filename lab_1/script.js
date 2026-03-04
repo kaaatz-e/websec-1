@@ -1,47 +1,30 @@
 const num1Input = document.getElementById("num1");
 const num2Input = document.getElementById("num2");
 const operationSelect = document.getElementById("operation");
-const calculateBtn = document.getElementById("calculate");
+const form = document.getElementById("calculate");
 const resultsDiv = document.getElementById("results");
 
 let history = [];
 
-function validateInput(input) {
-    const value = input.value.trim();
-    const errorMessage = input.parentElement.querySelector(".error-message");
+form.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-    if (value === "") {
-        input.classList.add("error");
-        errorMessage.textContent = "Поле не должно быть пустым";
-        return false;
-    }
-
-    if (isNaN(value)) {
-        input.classList.add("error");
-        errorMessage.textContent = "Введите число";
-        return false;
-    }
-
-    input.classList.remove("error");
-    errorMessage.textContent = "";
-    return true;
-}
+    calculate();
+})
 
 function calculate() {
-    const valid1 = validateInput(num1Input);
-    const valid2 = validateInput(num2Input);
-
-    if (!valid1 || !valid2) return;
-
-    const num1 = parseFloat(num1Input.value);
-    const num2 = parseFloat(num2Input.value);
+    const num1 = Number(num1Input.value);
+    const num2 = Number(num2Input.value);
     const operation = operationSelect.value;
 
     let result;
 
     if (operation === "/" && num2 === 0) {
-        num2Input.classList.add("error");
-        num2Input.parentElement.querySelector(".error-message").textContent = "Деление на ноль!";
+        alert("Деление на ноль!");
         return;
     }
 
@@ -83,5 +66,3 @@ function renderHistory() {
         resultsDiv.appendChild(div);
     });
 }
-
-calculateBtn.addEventListener("click", calculate);

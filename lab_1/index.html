@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="calculator">
+<form id="calculator">
     <div class="row">
         <div class="input-block">
-            <input id="num1">
-            <div id="error1" class="error-message"></div>
+            <input type="number" id="num1" required step="any">
         </div>
         <div class="operator">
             <select id="operation">
@@ -22,13 +21,12 @@
             </select>
         </div>
         <div class="input-block">
-            <input id="num2">
-            <div id="error2" class="error-message"></div>
+            <input type="number" id="num2" required step="any">
         </div>
     </div>
     <button id="calculate">подсчитать</button>
     <div class="results" id="results"></div>
-</div>
+</form>
 <script src="script.js"></script>
 </body>
 </html>
